@@ -5,10 +5,9 @@
                 <div class="card-body text-center">
                 <span class="titulo">Productos</span>
                 <button class="btn btn-success float-end" routerLink="/crear">Nuevo</button>
-                <table class="table table-striped mt-2">
+                <table *ngIf="listProductos.length > 0" class="table table-striped mt-2">
                     <thead>
                         <tr>
-                        <th scope="col">Producto</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Categoria</th>
                         <th scope="col">Cantidad</th>
@@ -17,19 +16,19 @@
                         </tr>
                     </thead>
                         <tbody>
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
+                            <tr *ngFor="let producto of listProductos">
+                            <td>{{ producto.nombre }}</td>
+                            <td>{{ producto.categoria }}</td>
+                            <td>{{ producto.cantidad }}</td>
+                            <td>{{ producto.precio }}</td>
                             <td>
-                                <i class="fa-solid fa-pen-to-square text-primary"></i>
-                                <i class="fa-solid fa-trash text-danger"></i>
+                                <i [routerLink]="['/editar', producto._id]" class="fa-solid fa-pen-to-square text-primary"></i>
+                                <i (click)="eliminarProducto(producto._id)" class="fa-solid fa-trash text-danger"></i>
                             </td>
                             </tr>
                         </tbody>
                     </table>
+                    <h5 style="text-align: center; margin-top: 10px;" *ngIf="listProductos.length == 0">No hay productos para mostrar</h5>
                 </div>
             </div>
         </div>

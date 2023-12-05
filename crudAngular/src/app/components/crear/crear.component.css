@@ -1,0 +1,9 @@
+.titulo {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.text-danger {
+  text-align: start;
+  margin-left: 7px;
+}
